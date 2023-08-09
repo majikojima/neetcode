@@ -3,23 +3,18 @@ from typing import List
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         count = {}
-
         for n in nums:
             count[n] = 1 + count.get(n, 0)
-            print("count: ", count)
 
         freq = [[] for i in range(len(nums) + 1)]
         for n, c in count.items():
             freq[c].append(n)
-            print("freq", freq)
 
         res = []
         for i in range(len(freq) - 1, 0, -1):
             print(f"i: {i}")
             for n in freq[i]:
-                print(f"n: {n}")
                 res.append(n)
-                print(f"res: {res}")
                 if len(res) == k:
                     return res
 
