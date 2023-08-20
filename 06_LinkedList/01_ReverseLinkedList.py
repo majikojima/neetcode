@@ -26,7 +26,6 @@ def list_to_linkedlist(nums):
 s = Solution()
 
 nums = [1,2,3,4,5]
-print(nums)
 linked_list = list_to_linkedlist(nums)
 
 result = s.reverseList(linked_list)

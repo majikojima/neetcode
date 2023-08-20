@@ -37,8 +37,7 @@ s = Solution()
 
 list1 = [1,3,4,5]
 list2 = [1,2,4,5]
-print(list1, list2)
-linked_list1 = list_to_linkedlist(list1)
+list_to_linkedlist(list1)
 linked_list2 = list_to_linkedlist(list2)
 
 result = s.reverseList(linked_list1, linked_list2)
