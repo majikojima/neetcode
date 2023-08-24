@@ -5,18 +5,14 @@ class KthLargest:
     def __init__(self, k: int, nums: List[int]):
         # minHeap w/ K largest integers
         self.minHeap, self.k = nums, k
-        print(f"before: {self.minHeap}")
         heapq.heapify(self.minHeap)
         while len(self.minHeap) > k:
             heapq.heappop(self.minHeap)
-        print(f"after : {self.minHeap}")
 
     def add(self, val: int) -> int:
-        print(f"before: {self.minHeap}")
         heapq.heappush(self.minHeap, val)
         if len(self.minHeap) > self.k:
             heapq.heappop(self.minHeap)
-        print(f"after : {self.minHeap}")
         return self.minHeap[0]
 
 # instantiate KthLargest object with k = 3 and nums = [4, 5, 8, 2]
@@ -122,20 +118,6 @@ print(kthLargest.add(4))
 """
 
 """
-`heapq`を理解するには、実際の例を考えてみると良いですよ。例えば、一群の子供がリンゴを取り合っているとしましょう。ただし、一度に持てるリンゴは3個までとします。
-
-1. `heapq.heapify(self.minHeap)`: 子供たちは、手元のリンゴを小さいものから大きいものの順に並べます。
-
-2. `while len(self.minHeap) > k:`: リンゴが3個以上あったら、1番小さいリンゴを誰かにあげます（`heapq.heappop(self.minHeap)`）。これで、自分が持っているリンゴはいつも3個以下になります。
-
-3. `heapq.heappush(self.minHeap, val)`: 新しいリンゴを見つけたら、それを手元のリンゴと一緒に並べます。ただし、これでリンゴの数が4個になったら、1番小さいリンゴを誰かにあげて、リンゴの数を3個に戻します。
-
-4. `return self.minHeap[0]`: 自分が持っているリンゴの中で、1番小さいリンゴを見せます。
-
-この例で言えば、「リンゴを持つ子供」が`KthLargest`クラス、「リンゴ」がヒープ（`self.minHeap`）、そして「リンゴを並べる」が`heapify`、「新しいリンゴを見つける」が`heappush`、「リンゴを誰かにあげる」が`heappop`に対応します。これを覚えておくと、`heapq`の動作がイメージしやすいかもしれません。
-"""
-
-"""
 `heapq.heappush()`は、新たな要素をヒープ（つまり、ある特定の性質を持つリスト）に追加すると同時に、ヒープの性質を維持するために必要な調整を行います。具体的には、追加した要素を適切な位置に移動して、全体がヒープ性質（親ノードが子ノードよりも小さいという特性）を満たすようにします。
 
 しかし、これは全体がソートされるわけではありません。全体をソートすると、リストの各要素がその前後の要素と比較して正しい順序になる必要があります。一方、ヒープでは、各要素はただ親ノードとのみ比較され、兄弟ノードや他の子ノードとは比較されません。
@@ -167,4 +149,76 @@ print(-num)  # Flip the sign again to get the original value
 ```
 
 このコードでは、リスト`nums`の要素の符号をすべて反転させてからヒープに変換しています。ヒープから要素を取り出す際には、再度符号を反転させて元の値を得ています。
+"""
+
+"""
+以下のコードは、K番目に大きい数を効率的に追跡するためのデータ構造を提供する`KthLargest`クラスを定義しています。具体的には、K番目に大きい数を求めるために最小ヒープを使用しています。
+
+シミュレーションを行いましょう。
+
+```python
+# instantiate KthLargest object with k = 3 and nums = [4, 5, 8, 2]
+kthLargest = KthLargest(3, [4, 5, 8, 2])
+```
+このとき、初期化のprint文からの出力:
+```
+before: [4, 5, 8, 2]
+after : [4, 5, 8]
+```
+最小ヒープが作られ、最も小さい数である`2`が取り除かれました。
+
+次に、`add`メソッドで新しい値を追加していきます。
+
+```python
+print("add(3)")
+print(kthLargest.add(3))
+```
+このとき、出力は:
+```
+before: [4, 5, 8]
+after : [4, 5, 8]
+add(3)
+4
+```
+`3`は現在のヒープのすべての要素よりも小さいため、ヒープに追加されずに取り除かれ、3番目に大きい数は`4`です。
+
+次に、`5`を追加します。
+```python
+print("add(5)")
+print(kthLargest.add(5))
+```
+出力:
+```
+before: [4, 5, 8]
+after : [5, 5, 8]
+add(5)
+5
+```
+`5`はヒープに追加され、一番小さい数である`4`が取り除かれます。新しい3番目に大きい数は`5`です。
+
+次に、`10`、`9`、そして`4`を追加していきます。
+```python
+print("add(10)")
+print(kthLargest.add(10))
+print("add(9)")
+print(kthLargest.add(9))
+print("add(4)")
+print(kthLargest.add(4))
+```
+出力:
+```
+before: [5, 5, 8]
+after : [8, 5, 10]
+add(10)
+8
+before: [8, 5, 10]
+after : [9, 8, 10]
+add(9)
+9
+before: [9, 8, 10]
+after : [9, 8, 10]
+add(4)
+9
+```
+最終的に、3番目に大きい数は`9`となります。
 """
