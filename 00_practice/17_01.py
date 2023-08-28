@@ -5,17 +5,18 @@ def isHappy(n: int) -> bool:
         slow = sumSquard(slow)
         fast = sumSquard(fast)
         fast = sumSquard(fast)
+    
     if fast == 1:
         return True
     else:
         return False
 
 def sumSquard(n):
-    sumS = 0
+    res = 0
     while n:
-        sumS += (n % 10) ** 2
+        res += (n % 10) ** 2
         n //= 10
-    return sumS
+    return res
 
 
 n = 19
