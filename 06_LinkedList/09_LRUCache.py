@@ -27,9 +27,7 @@ class LRUCache:
         if key in self.cache:
             self.remove(self.cache[key])
             self.insert(self.cache[key])
-            print(self.cache[key].val)
             return self.cache[key].val
-        print(-1)
         return -1
 
     def put(self, key: int, value: int) -> None:
@@ -43,7 +41,6 @@ class LRUCache:
             lru = self.left.next
             self.remove(lru)
             del self.cache[lru.key]
-        print(self.cache)
 
 lRUCache = LRUCache(2)
 lRUCache.put(1, 1); # cache is {1=1}

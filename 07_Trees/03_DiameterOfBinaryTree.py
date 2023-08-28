@@ -16,12 +16,9 @@ class Solution:
 
             if not root:
                 return 0
-            print(f"root.val: {root.val}")
-            print(f"left: {root.left}, right: {root.right}")
             left = dfs(root.left)
             right = dfs(root.right)
             res = max(res, left + right)
-            print(f"res: {res}")
 
             return 1 + max(left, right)
         

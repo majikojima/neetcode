@@ -1,17 +1,12 @@
-# [https://leetcode.com/problems/valid-parentheses/]
-
 class Solution:
     def isValid(self, s: str) -> bool:
         Map = {")": "(", "]": "[", "}": "{"}
         stack = []
 
         for c in s:
-            print(f"stack: {stack}")
-            print(f"c: {c}")
             if c not in Map:
                 stack.append(c)
                 continue
-            print(Map[c])
             if not stack or stack[-1] != Map[c]:
                 return False
             stack.pop()

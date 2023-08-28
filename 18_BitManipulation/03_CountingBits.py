@@ -6,7 +6,6 @@ class Solution:
         offset = 1
 
         for i in range(1, n + 1):
-            print(f"i: {i}, offset: {offset}")
             if offset * 2 == i:
                 offset = i
             dp[i] = 1 + dp[i - offset]

@@ -3,17 +3,12 @@ import heapq
 
 class Solution:
     def lastStoneWeight(self, stones: List[int]) -> int:
-        print(stones)
         stones = [-s for s in stones]
         heapq.heapify(stones)
 
         while len(stones) > 1:
-            print(f"stones: {stones}, len(s): {len(stones)}")
-
             first = heapq.heappop(stones)
             second = heapq.heappop(stones)
-            
-            print(f"first: {first}, second: {second}, push: {first - second}")
 
             if second > first:
                 heapq.heappush(stones, first - second)
@@ -25,10 +20,6 @@ s = Solution()
 stones = [2,7,4,1,8,1]
 result = s.lastStoneWeight(stones)
 print(result)
-
-# stones = [1]
-# result = s.lastStoneWeight(stones)
-# print(result)
 
 """
 もちろんです。このコードは、与えられた配列（石の重さのリスト）の中から2つの最大の石を取り出し、その差を再びリストに戻すというプロセスを、リストの要素が1つになるまで続けるものです。

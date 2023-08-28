@@ -12,9 +12,6 @@ class Solution:
         if not root:
             return 0
         
-        print(f"val:{root.val}")
-        print(f"left:{root.left}, right:{root.right}")
-        
         return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
 
 def list_to_treeNode(nums):

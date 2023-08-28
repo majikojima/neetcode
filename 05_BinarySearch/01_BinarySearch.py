@@ -7,7 +7,6 @@ class Solution:
 
         while l <= r:
             m = l + ((r - l) // 2)
-            print(m)
             if target < nums[m]:
                 r = m - 1
             elif target > nums[m]:

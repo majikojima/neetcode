@@ -5,7 +5,6 @@ class Solution:
         res = len(nums)
 
         for i in range(len(nums)):
-            print(res)
             res += i - nums[i]
 
         return res
