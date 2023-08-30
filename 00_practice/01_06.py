@@ -1,28 +1,25 @@
 from typing import List
 
 def productExceptSelf(nums: List[int]) -> List[int]:
-    result = [1] * (len(nums))
-
-    pre_result = [1] * (len(nums))
-    prefix = 1
+    pre = [1] * len(nums)
+    n = 1
     for i in range(len(nums)):
-        pre_result[i] = prefix
-        prefix *= nums[i]
+        pre[i] = n
+        n = n * nums[i]
+    print(pre)
 
-    print(f"pre_result: {pre_result}")
+    suf = [1] * len(nums)
+    n = 1
+    for i in range(len(nums)-1, -1, -1):
+        suf[i] = n
+        n = n * nums[i]
+    print(suf)
 
-    post_result = [1] * (len(nums))
-    postfix = 1
-    for i in range(len(nums) - 1, -1, -1):
-        post_result[i] *= postfix
-        postfix *= nums[i]
-
-    print(f"post_result: {post_result}")
-
+    res = [1] * len(nums)
     for i in range(len(nums)):
-        result[i] = pre_result[i] * post_result[i]
-
-    return result
+        res[i] = pre[i] * suf[i]
+    
+    return res
 
 nums = [1,2,3,4]
 result = productExceptSelf(nums)

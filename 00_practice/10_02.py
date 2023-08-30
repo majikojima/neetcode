@@ -1,25 +1,7 @@
 from typing import List
 
 def combinationSum(candidates: List[int], target: int) -> List[List[int]]:
-    res = []
 
-    def b(i, curr, total):
-        if total == target:
-            # res.append(curr)
-            res.append(curr.copy())
-            return
-        if total > target:
-            return
-        if i >= len(candidates):
-            return
-        curr.append(candidates[i])
-        b(i, curr, total + candidates[i])
-
-        curr.pop()
-        b(i + 1, curr, total)
-        
-    b(0, [], 0)
-    return res
 
 candidates = [2,3,6,7]
 target = 7
