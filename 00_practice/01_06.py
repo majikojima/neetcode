@@ -8,16 +8,16 @@ def productExceptSelf(nums: List[int]) -> List[int]:
         n = n * nums[i]
     print(pre)
 
-    suf = [1] * len(nums)
+    pos = [1] * len(nums)
     n = 1
     for i in range(len(nums)-1, -1, -1):
-        suf[i] = n
+        pos[i] = n
         n = n * nums[i]
-    print(suf)
+    print(pos)
 
     res = [1] * len(nums)
     for i in range(len(nums)):
-        res[i] = pre[i] * suf[i]
+        res[i] = pre[i] * pos[i]
     
     return res
 
