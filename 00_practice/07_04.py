@@ -48,17 +48,20 @@ def treeNode_to_list(root):
     return result
 
 def isBalanced(root: TreeNode) -> bool:
-    def dfs(root):        
+    def dfs(root):
         if not root:
-            return [True, 0]
-        left = dfs(root.left)
-        right = dfs(root.right)
-        if left[0] and right[0] and abs(left[1] - right[1]) <= 1:
-            balanced = True
+            return True, 0
+        
+        leftB, leftH = dfs(root.left)
+        rightB, rightH = dfs(root.right)
+        if abs(leftH - rightH) <= 1 and leftB and rightB:
+            balance = True
         else:
-            balanced = False
-        return [balanced, 1 + max(left[1], right[1])]
-    return dfs(root)[0]
+            balance = False
+        return balance, 1 + max(leftH, rightH)
+    
+    balance, _ = dfs(root)
+    return balance
 
 root = [3,9,20,None,None,15,7]
 print(root)

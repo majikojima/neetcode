@@ -56,7 +56,7 @@ def isSubtree(root: TreeNode, subRoot: TreeNode) -> bool:
         return True
     return isSubtree(root.left, subRoot) or isSubtree(root.right, subRoot)
 
-def sameTree(p, q):
+def sameTree(p: TreeNode, q: TreeNode) -> bool:
     if not p and not q:
         return True
     if p and q and p.val == q.val:

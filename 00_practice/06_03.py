@@ -4,18 +4,6 @@ class ListNode:
         self.val = val
         self.next = next
 
-class Solution:
-    def hasCycle(self, head: ListNode) -> bool:
-        slow, fast = head, head
-
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-            if slow == fast:
-                return True
-
-        return False
-
 def list_to_linkedlist(nums):
     dummy = ListNode(0)
     ptr = dummy
@@ -47,15 +35,21 @@ def create_cycle_in_linkedlist(nums, pos):
 
     return head
 
-
-# Using your Solution class...
-s = Solution()
+def hasCycle(head: ListNode) -> bool:
+    slow = head
+    fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            return True
+    return False
 
 nums = [3,4,0,-4,3,4,0,-4]
 pos = 1
 print(nums, pos)
 linked_list_with_cycle = create_cycle_in_linkedlist(nums, pos)
 
-result = s.hasCycle(linked_list_with_cycle)
+result = hasCycle(linked_list_with_cycle)
 
 print(result)
