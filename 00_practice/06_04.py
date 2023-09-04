@@ -12,16 +12,23 @@ def list_to_linkedlist(nums):
         ptr = ptr.next
     return dummy.next
 
-def removeNthFromEnd(head: ListNode, n: int) -> ListNode:
+def reorderList(head: ListNode) -> None:
 
-    
-nums = [1,2,3,4,5]
-n = 2
-linked_list = list_to_linkedlist(nums)
 
-result = removeNthFromEnd(linked_list, n)
+head = [1,2,3,4]
+print(head)
+head = list_to_linkedlist(head)
+reorderList(head)
+current_node = head
+while current_node is not None:
+    print(current_node.val)
+    current_node = current_node.next
 
-current_node = result
-while current_node:
+head = [1,2,3,4,5]
+print(head)
+head = list_to_linkedlist(head)
+reorderList(head)
+current_node = head
+while current_node is not None:
     print(current_node.val)
     current_node = current_node.next
