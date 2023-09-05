@@ -14,40 +14,22 @@ def list_to_linkedlist(nums):
         ptr = ptr.next
     return dummy.next
 
-def reverseKGroup(head: ListNode, k: int) -> ListNode:
-    dummy = ListNode(0)
-    groupPrev = dummy
+class Solution:
+    def reverseKGroup(self, head: ListNode, k: int) -> ListNode:
+        
 
-    while True:
-        kth = getKth(head, k)
-        if not kth:
-            break
-        groupPrev.next = kth
-        groupNext = kth.next
-
-        prev = groupNext
-        curr = head
-        while curr != groupNext:
-            tmp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = tmp
-
-        groupPrev = head
-        head = groupNext
-    return dummy.next
-
-def getKth(head, k):
-    while head and k > 0:
-        head = head.next
-        k -= 1
-    return head
-
+    def getKth(self, curr, k):
+        while curr and k > 0:
+            curr = curr.next
+            k -= 1
+        return curr
+ 
+s = Solution()
 head = [1,2,3,4,5]
 k = 2
 llh = list_to_linkedlist(head)
 
-result = reverseKGroup(llh, k)
+result = s.reverseKGroup(llh, k)
 
 current_node = result
 while current_node is not None:
