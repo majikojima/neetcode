@@ -25,7 +25,7 @@ tasks = ["A","A","A","B","B","B"]
 n = 2
 print(leastInterval(tasks, n))
         
-tasks = ["A","A","A","B","B","C","c"]
+tasks = ["A","A","A","B","B","C","C"]
 n = 2
 print(leastInterval(tasks, n))
 
