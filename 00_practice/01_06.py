@@ -1,25 +1,7 @@
 from typing import List
 
 def productExceptSelf(nums: List[int]) -> List[int]:
-    pre = [1] * len(nums)
-    n = 1
-    for i in range(len(nums)):
-        pre[i] = n
-        n = n * nums[i]
-    print(pre)
 
-    pos = [1] * len(nums)
-    n = 1
-    for i in range(len(nums)-1, -1, -1):
-        pos[i] = n
-        n = n * nums[i]
-    print(pos)
-
-    res = [1] * len(nums)
-    for i in range(len(nums)):
-        res[i] = pre[i] * pos[i]
-    
-    return res
 
 nums = [1,2,3,4]
 result = productExceptSelf(nums)
