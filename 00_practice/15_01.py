@@ -1,12 +1,15 @@
 from typing import List
 
-def canCompleteCircuit(gas: List[int], cost: List[int]) -> int:
-    
+def maxSubArray(nums: List[int]) -> int:
 
-gas = [1,2,3,4,5]
-cost = [3,4,5,1,2]
-print(canCompleteCircuit(gas, cost))
+nums = [-2,1,-3,4,-1,2,1,-5,4]
+print(maxSubArray(nums))
 
-gas = [2,3,4]
-cost = [3,4,3]
-print(canCompleteCircuit(gas, cost))
+nums = [1]
+print(maxSubArray(nums))
+
+nums = [5,4,-1,7,8]
+print(maxSubArray(nums))
+
+nums = [-1, -2]
+print(maxSubArray(nums))
